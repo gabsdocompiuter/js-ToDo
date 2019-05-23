@@ -1,18 +1,30 @@
-var listaElement  = document.getElementById('lista');
-var inputElement  = document.getElementById('novoItem');
-var buttonElement = document.getElementById('submit');
+var divListaElement = document.getElementById('lista');
+var inputElement    = document.getElementById('novoItem');
+var buttonElement   = document.getElementById('submit');
 
 var itens =
 [
-    'Coisa 1',
-    'Coisa 2',
-    'Coisa 3'
+    
 ];
 
 function CarregaItens()
 {
-    listaElement.innerHTML = '';
+    divListaElement.innerHTML = '';
 
+    if(itens.length == 0)
+    {
+
+        var msgElement = document.createElement('p');
+        var msgText = document.createTextNode('Você não tem itens na lista!');
+        
+        msgElement.appendChild(msgText);
+        divListaElement.appendChild(msgElement);
+        //return;
+    }
+
+    var ulElement = document.createElement('ul');
+    ulElement.setAttribute('id', 'lista');
+    
     for(item of itens)
     {
         var itemElement = document.createElement('li');
@@ -29,9 +41,11 @@ function CarregaItens()
         excluirElement.appendChild(excluirText);
         itemElement.appendChild(excluirElement);
 
-
-        listaElement.appendChild(itemElement);
+        
+        ulElement.appendChild(itemElement);
     }
+
+    divListaElement.appendChild(ulElement);
 }
 
 function AddItem()
