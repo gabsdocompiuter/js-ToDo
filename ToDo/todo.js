@@ -7,7 +7,7 @@ var itens =
     
 ];
 
-function CarregaItens()
+function carregaItens()
 {
     divListaElement.innerHTML = '';
 
@@ -46,7 +46,7 @@ function CarregaItens()
     divListaElement.appendChild(ulElement);
 }
 
-function AddItem()
+function addItem()
 {
     var novoItem = inputElement.value;
 
@@ -68,20 +68,20 @@ function AddItem()
 
     inputElement.value = '';
 
-    CarregaItens();
+    carregaItens();
 }
 
-function RemoveItem(pos)
+function removeItem(pos)
 {
     itens.splice(pos, 1);
 
-    CarregaItens();
+    carregaItens();
 }
 
 buttonElement.onclick = function()
 {
-    AddItem();
+    addItem();
 }
 
 
-CarregaItens();
+carregaItens();
