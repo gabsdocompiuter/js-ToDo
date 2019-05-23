@@ -2,10 +2,7 @@ var divListaElement = document.getElementById('lista');
 var inputElement    = document.getElementById('novoItem');
 var buttonElement   = document.getElementById('submit');
 
-var itens =
-[
-    
-];
+var itens = JSON.parse(localStorage.getItem('ToDoItens')) || [];
 
 function carregaItens()
 {
@@ -69,6 +66,7 @@ function addItem()
     inputElement.value = '';
 
     carregaItens();
+    saveIntoStorage()
 }
 
 function removeItem(pos)
@@ -76,6 +74,13 @@ function removeItem(pos)
     itens.splice(pos, 1);
 
     carregaItens();
+    saveIntoStorage()
+}
+
+function saveIntoStorage(){
+    var jsonItens = JSON.stringify(itens);
+
+    localStorage.setItem('ToDoItens', jsonItens);
 }
 
 buttonElement.onclick = function()
