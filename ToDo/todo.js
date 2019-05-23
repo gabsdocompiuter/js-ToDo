@@ -13,13 +13,11 @@ function CarregaItens()
 
     if(itens.length == 0)
     {
-
         var msgElement = document.createElement('p');
         var msgText = document.createTextNode('Você não tem itens na lista!');
         
         msgElement.appendChild(msgText);
         divListaElement.appendChild(msgElement);
-        //return;
     }
 
     var ulElement = document.createElement('ul');
@@ -51,6 +49,21 @@ function CarregaItens()
 function AddItem()
 {
     var novoItem = inputElement.value;
+
+    //Verifica se escreveu algo no input
+    if(novoItem == '')
+    {
+        alert('Você precisa informar uma descrição para o item');
+        return;
+    }
+
+    //Verifica se lista já contém item igual
+    if(itens.indexOf(novoItem) != -1)
+    {
+        inputElement.value = '';
+        return;
+    }
+
     itens.push(novoItem);
 
     inputElement.value = '';
